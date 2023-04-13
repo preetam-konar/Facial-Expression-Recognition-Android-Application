@@ -16,7 +16,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.konar.howyoudoin.databinding.ActivityMainBinding
+import com.konar.howyoudoin.ml.FacialExpressionRecog
 import kotlinx.coroutines.DelicateCoroutinesApi
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -212,6 +216,7 @@ class MainActivity : AppCompatActivity() {
     private val takePicture = registerForActivityResult(ActivityResultContracts.TakePicture()) {
         val intent = Intent(this@MainActivity, ResultActivity::class.java)
         intent.putExtra("Selected Image Uri", imageUri.toString())
+
         startActivity(intent)
     }
 
